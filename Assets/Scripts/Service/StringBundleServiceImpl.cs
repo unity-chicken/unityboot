@@ -28,7 +28,7 @@ public class StringBundleServiceImpl : Singleton<StringBundleServiceImpl>, Strin
 
     // apis
     //-------------------------------------------------------------------------
-    public void Initialize(params string[] langs) {
+    public IEnumerator Initialize(params string[] langs) {
         this.defaultLang = langs[0];
         foreach (string lang in langs) {
             this.supportLangs.Add(lang);
@@ -38,7 +38,8 @@ public class StringBundleServiceImpl : Singleton<StringBundleServiceImpl>, Strin
 #if UNITY_EDITOR        
         ReportUntranslated();
         ReportQuestions();
-#endif        
+#endif
+        yield break;
     }
 
     public string Get(string key) {

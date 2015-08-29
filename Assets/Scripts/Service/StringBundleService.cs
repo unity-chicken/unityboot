@@ -5,7 +5,7 @@ using System.Collections;
 public interface StringBundleService {
     string language { get; }
 
-    void Initialize(params string[] langs);
+    IEnumerator Initialize(params string[] langs);
     string Get(string key);
     string GetWithEeGa(string key);
     string GetWithEulReul(string key);
