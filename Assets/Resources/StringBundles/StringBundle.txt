@@ -1,0 +1,20 @@
+#------------------------------------------------------------------------------
+# common
+#------------------------------------------------------------------------------
+common.app.title
+    |ko| 앱이름
+    |en| YOUR APP NAME
+
+
+#------------------------------------------------------------------------------
+# loading scene
+#------------------------------------------------------------------------------
+loading.status.bundle.load.scene
+    |ko| 씬을 로딩중입니다.
+    |en| Loading scenes. ({0:D}%)
+loading.status.bundle.load.resource
+    |ko| 리소스를 다운로드중입니다. ({0:D}%)
+    |en| Loading resources. ({0:D}%)
+loading.status.bundle.failed
+    |ko| 게임 데이타를 다운로드 받지 못했습니다.
+    |en| Failed to download game data.
