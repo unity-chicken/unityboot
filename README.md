@@ -37,7 +37,7 @@ public class IntroSceneController : SceneControllerBase {
         Service.ready = true;
 
         yield return new WaitForSeconds(1);
-        yield return StartCoroutine(LoadLevel("Battle"));
+        yield return StartCoroutine(Service.scene.LoadLevel("Battle"));
     }
 }
 ```
