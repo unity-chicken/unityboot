@@ -6,12 +6,12 @@ public class BootDemoController : SceneControllerBase, BundleLoadingPresenter {
 
 	void Awake() {
 		InitController();
-	}
-
-	IEnumerator Start() {
 #if !UNITY_ANDROID && !UNITY_IOS
 		Swith Platfrom to "Android" Or "iOS" to Test BundleDownload
 #endif
+	}
+
+	IEnumerator Start() {
 		yield return Service.Run(InitializeService());
 		if (Service.ready == true) {
 			yield return Service.Run(MakeRemoteStuff());
