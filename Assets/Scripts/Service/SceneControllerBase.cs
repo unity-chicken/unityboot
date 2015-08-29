@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class SceneControllerBase : MonoBehaviour, SceneController {
     protected void InitController() {
-        Service.sceneController = this;
+        Service.scene = this;
         if (Application.loadedLevel != 0 && Service.ready == false) {
             Application.LoadLevel(0);
         }

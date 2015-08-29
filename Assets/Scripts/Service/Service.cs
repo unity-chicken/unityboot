@@ -7,7 +7,7 @@ public class Service : SingletonGameObject<Service> {
 
     // Services
     //-------------------------------------------------------------------------
-    public static SceneController sceneController { get; set; }
+    public static SceneController scene { get; set; }
     public static BundleDownloader bundle { get { return BundleDownloaderImpl.instance; } }
     public static GoPooler goPooler { get { return GoPoolerImpl.instance; } }
     public static StringBundleService sb { get { return StringBundleServiceImpl.instance; } }
