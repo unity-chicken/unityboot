@@ -20,22 +20,24 @@ Spring Boot makes it easy to create Unity based Applications that you can "just 
 ### Initialize Services
 
 ```c#
-class IntroSceneController : MonoBehaviour {
+public class IntroSceneController : SceneControllerBase {
+    Logger logger = new Logger("IntroSceneController");
+
+    void Awake() {
+        InitController();
+    }
+
     IEnumerator Start() {
-        StartCoroutine(InitializeService());
+        yield return StartCoroutine(InitializeService());
     }
 
     IEnumerator InitializeService() {
-        Service.ready = false;
-
-        // initialize string bundle
-        yield return Service.sb.Initialize("en", "ko");
-
-        // initialize setting service
+        yield return Service.Run(Service.sb.Initialize("en", "ko"));
         yield return Service.Run(Service.setting.Initialize());
-
-        // ...
         Service.ready = true;
+
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(LoadLevel("Battle"));
     }
 }
 ```
