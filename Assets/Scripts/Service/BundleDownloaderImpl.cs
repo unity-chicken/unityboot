@@ -20,12 +20,12 @@ public class BundleDownloaderImpl : Singleton<BundleDownloaderImpl>, BundleDownl
     string remoteResourcesMeta = "";
     string remoteScenesMetaFilePath = Application.persistentDataPath + "/remoteScenesMeta";
     string remoteResourcesMetaFilePath = Application.persistentDataPath + "/remoteResourcesMeta";
-    string postfix             { get { return string.Format("{0:D3}", Version.remoteBundleVersion); } }
-    string cdnHost            { get; set; }
+    string postfix          { get { return string.Format("{0:D3}", Version.remoteBundleVersion); } }
+    string cdnHost          { get; set; }
     string cdnResources     { get { return string.Format(cdnHost + "{0}{1}/resources/", GetPlatform(), postfix); } } 
     string cdnResourcesMeta { get { return string.Format(cdnHost + "{0}{1}/resources/resources.meta", GetPlatform(), postfix); } } 
-    string cdnScenes         { get { return string.Format(cdnHost + "{0}{1}/scenes/", GetPlatform(), postfix); } } 
-    string cdnScenesMeta     { get { return string.Format(cdnHost + "{0}{1}/scenes/scenes.meta", GetPlatform(), postfix); } } 
+    string cdnScenes        { get { return string.Format(cdnHost + "{0}{1}/scenes/", GetPlatform(), postfix); } } 
+    string cdnScenesMeta    { get { return string.Format(cdnHost + "{0}{1}/scenes/scenes.meta", GetPlatform(), postfix); } } 
     bool ready = false;
     int doneCount = 0;
     int successSceneWorkerCount = 0;
