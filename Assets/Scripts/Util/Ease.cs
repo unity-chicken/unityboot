@@ -161,171 +161,171 @@ public class Ease {
 	}
 
 	static public float spring(float from, float to, float time){
-        time = Mathf.Clamp01(time);
-        time = (Mathf.Sin(time * Mathf.PI * (.2f + 2.5f * time * time * time)) * Mathf.Pow(1f - time, 2.2f) + time) * (1f + (1.2f * (1f - time)));
-        return from + (to - from) * time;
+		time = Mathf.Clamp01(time);
+		time = (Mathf.Sin(time * Mathf.PI * (.2f + 2.5f * time * time * time)) * Mathf.Pow(1f - time, 2.2f) + time) * (1f + (1.2f * (1f - time)));
+		return from + (to - from) * time;
 	}
 
 	static public float easeInQuad(float from, float to, float time){
-        return Mathf.Lerp(from, to, time * time);
+		return Mathf.Lerp(from, to, time * time);
 	}
 
 	static public float easeOutQuad(float from, float to, float time){
-        return Mathf.Lerp(from, to, -time * (time - 2f));
+		return Mathf.Lerp(from, to, -time * (time - 2f));
 	}
 
 	static public float easeInOutQuad(float from, float to, float time){
-        if ((time /= .5f) < 1f)
-            return Mathf.Lerp(from, to, .5f * time * time);
-        return Mathf.Lerp(from, to, -.5f * (((--time) * (time - 2f) - 1f)));
+		if ((time /= .5f) < 1f)
+			return Mathf.Lerp(from, to, .5f * time * time);
+		return Mathf.Lerp(from, to, -.5f * (((--time) * (time - 2f) - 1f)));
 	}
 
 	static public float easeInCubic(float from, float to, float time){
-        return Mathf.Lerp(from, to, time * time * time);
+		return Mathf.Lerp(from, to, time * time * time);
 	}
 
 	static public float easeOutCubic(float from, float to, float time){
-        return Mathf.Lerp(from, to, (time -= 1f) * time * time + 1f);
+		return Mathf.Lerp(from, to, (time -= 1f) * time * time + 1f);
 	}
 
 	static public float easeInOutCubic(float from, float to, float time){
-        if ((time /= .5f) < 1f)
-            return Mathf.Lerp(from, to, .5f * time * time * time);
-        return Mathf.Lerp(from, to, .5f * ((time -= 2) * time * time + 2f));
+		if ((time /= .5f) < 1f)
+			return Mathf.Lerp(from, to, .5f * time * time * time);
+		return Mathf.Lerp(from, to, .5f * ((time -= 2) * time * time + 2f));
 	}
 
 	static public float easeInQuart(float from, float to, float time){
-        return Mathf.Lerp(from, to, time * time * time * time);
+		return Mathf.Lerp(from, to, time * time * time * time);
 	}
 
 	static public float easeOutQuart(float from, float to, float time){
-        return Mathf.Lerp(from, to, -((time -= 1f) * time * time * time - 1f));
+		return Mathf.Lerp(from, to, -((time -= 1f) * time * time * time - 1f));
 	}
 
 	static public float easeInOutQuart(float from, float to, float time){
-        if ((time /= .5f) < 1f)
-            return Mathf.Lerp(from, to, .5f * time * time * time * time);
-        return Mathf.Lerp(from, to, -.5f * ((time -= 2f) * time * time * time - 2f));
+		if ((time /= .5f) < 1f)
+			return Mathf.Lerp(from, to, .5f * time * time * time * time);
+		return Mathf.Lerp(from, to, -.5f * ((time -= 2f) * time * time * time - 2f));
 	}
 
 	static public float easeInQuint(float from, float to, float time){
-        return Mathf.Lerp(from, to, time * time * time * time * time);
+		return Mathf.Lerp(from, to, time * time * time * time * time);
 	}
 
 	static public float easeOutQuint(float from, float to, float time){
-        return Mathf.Lerp(from, to, (time -= 1f) * time * time * time * time + 1f);
+		return Mathf.Lerp(from, to, (time -= 1f) * time * time * time * time + 1f);
 	}
 
 	static public float easeInOutQuint(float from, float to, float time){
-        if ((time /= .5f) < 1f)
-            return Mathf.Lerp(from, to, .5f * time * time * time * time * time);
-        return Mathf.Lerp(from, to, .5f * ((time -= 2f) * time * time * time * time + 2f));
+		if ((time /= .5f) < 1f)
+			return Mathf.Lerp(from, to, .5f * time * time * time * time * time);
+		return Mathf.Lerp(from, to, .5f * ((time -= 2f) * time * time * time * time + 2f));
 	}
 
 	static public float easeInSine(float from, float to, float time){
-        return Mathf.Lerp(from, to, 1f - Mathf.Cos(time * HalfPi));
+		return Mathf.Lerp(from, to, 1f - Mathf.Cos(time * HalfPi));
 	}
 
 	static public float easeOutSine(float from, float to, float time){
-        return Mathf.Lerp(from, to, Mathf.Sin(time * HalfPi));
+		return Mathf.Lerp(from, to, Mathf.Sin(time * HalfPi));
 	}
 
 	static public float easeInOutSine(float from, float to, float time){
-        return Mathf.Lerp(from, to, .5f * (1f - Mathf.Cos(Mathf.PI * time)));
+		return Mathf.Lerp(from, to, .5f * (1f - Mathf.Cos(Mathf.PI * time)));
 	}
 
 	static public float easeInExpo(float from, float to, float time){
-        return Mathf.Lerp(from, to, Mathf.Pow(2f, 10f * (time - 1f)));
+		return Mathf.Lerp(from, to, Mathf.Pow(2f, 10f * (time - 1f)));
 	}
 
 	static public float easeOutExpo(float from, float to, float time){
-        return Mathf.Lerp(from, to, -Mathf.Pow(2f, -10f * time) + 1f);
+		return Mathf.Lerp(from, to, -Mathf.Pow(2f, -10f * time) + 1f);
 	}
 
 	static public float easeInOutExpo(float from, float to, float time){
-        if ((time /= .5f) < 1f)
-            return Mathf.Lerp(from, to, .5f * Mathf.Pow(2f, 10f * (time - 1f)));
-        return Mathf.Lerp(from, to, .5f * (-Mathf.Pow(2f, -10f * --time) + 2f));
+		if ((time /= .5f) < 1f)
+			return Mathf.Lerp(from, to, .5f * Mathf.Pow(2f, 10f * (time - 1f)));
+		return Mathf.Lerp(from, to, .5f * (-Mathf.Pow(2f, -10f * --time) + 2f));
 	}
 
 	static public float easeInCirc(float from, float to, float time){
-        return Mathf.Lerp(from, to, -(Mathf.Sqrt(1f - time * time) - 1f));
+		return Mathf.Lerp(from, to, -(Mathf.Sqrt(1f - time * time) - 1f));
 	}
 
 	static public float easeOutCirc(float from, float to, float time){
-        return Mathf.Lerp(from, to, Mathf.Sqrt(1f - (time -= 1f) * time));
+		return Mathf.Lerp(from, to, Mathf.Sqrt(1f - (time -= 1f) * time));
 	}
 
 	static public float easeInOutCirc(float from, float to, float time){
-        if ((time /= .5f) < 1f)
-            return Mathf.Lerp(from, to, -.5f * (Mathf.Sqrt(1f - time * time) - 1f));
-        return Mathf.Lerp(from, to, .5f * (Mathf.Sqrt(1f - (time -= 2f) * time) + 1f));
+		if ((time /= .5f) < 1f)
+			return Mathf.Lerp(from, to, -.5f * (Mathf.Sqrt(1f - time * time) - 1f));
+		return Mathf.Lerp(from, to, .5f * (Mathf.Sqrt(1f - (time -= 2f) * time) + 1f));
 	}
 
 	static public float easeInBounce(float from, float to, float time){
-        to -= from;
-        return to - easeOutBounce(0f, to, 1f - time) + from;
+		to -= from;
+		return to - easeOutBounce(0f, to, 1f - time) + from;
 	}
 
 	static public float easeOutBounce(float from, float to, float time){
-        to -= from;
-        if (time < (1f / 2.75f))
-            return to * (7.5625f * time * time) + from;
-        if (time < (2f / 2.75f))
-            return to * (7.5625f * (time -= (1.5f / 2.75f)) * time + .75f) + from;
-        if (time < (2.5f / 2.75f))
-            return to * (7.5625f * (time -= (2.25f / 2.75f)) * time + .9375f) + from;
-        return to * (7.5625f * (time -= (2.625f / 2.75f)) * time + .984375f) + from;
+		to -= from;
+		if (time < (1f / 2.75f))
+			return to * (7.5625f * time * time) + from;
+		if (time < (2f / 2.75f))
+			return to * (7.5625f * (time -= (1.5f / 2.75f)) * time + .75f) + from;
+		if (time < (2.5f / 2.75f))
+			return to * (7.5625f * (time -= (2.25f / 2.75f)) * time + .9375f) + from;
+		return to * (7.5625f * (time -= (2.625f / 2.75f)) * time + .984375f) + from;
 	}
 
 	static public float easeInOutBounce(float from, float to, float time){
-        to -= from;
-        if (time < .5f)
-            return easeInBounce(0f, to, time * 2f) * .5f + from;
-        return easeOutBounce(0f, to, time * 2f - 1f) * .5f + to * .5f + from;
+		to -= from;
+		if (time < .5f)
+			return easeInBounce(0f, to, time * 2f) * .5f + from;
+		return easeOutBounce(0f, to, time * 2f - 1f) * .5f + to * .5f + from;
 	}
 
 	static public float easeInBack(float from, float to, float time){
-        const float s = 1.70158f;
-        to -= from;
-        return to * time * time * ((s + 1f) * time - s) + from;
+		const float s = 1.70158f;
+		to -= from;
+		return to * time * time * ((s + 1f) * time - s) + from;
 	}
 
 	static public float easeOutBack(float from, float to, float time){
-        const float s = 1.70158f;
-        to -= from;
-        return to * (--time * time * ((s + 1f) * time + s) + 1f) + from;
+		const float s = 1.70158f;
+		to -= from;
+		return to * (--time * time * ((s + 1f) * time + s) + 1f) + from;
 	}
 
 	static public float easeInOutBack(float from, float to, float time){
-        const float s = 1.70158f * 1.525f;
-        to -= from;
-        if ((time /= .5f) < 1f)
-            return to * .5f * (time * time * ((s + 1f) * time - s)) + from;
-        return to * .5f * ((time -= 2) * time * ((s + 1f) * time  + s) + 2f) + from;
+		const float s = 1.70158f * 1.525f;
+		to -= from;
+		if ((time /= .5f) < 1f)
+			return to * .5f * (time * time * ((s + 1f) * time - s)) + from;
+		return to * .5f * ((time -= 2) * time * ((s + 1f) * time  + s) + 2f) + from;
 	}
 	
 	static public float easeInElastic(float from, float to, float time){
-        const float p = .3f;
-        const float s = p / 4f;
-        to -= from;
-        return to * -(Mathf.Pow(2f, 10f * (time -= 1f)) * Mathf.Sin((time - s) * DoublePi / p)) + from;
+		const float p = .3f;
+		const float s = p / 4f;
+		to -= from;
+		return to * -(Mathf.Pow(2f, 10f * (time -= 1f)) * Mathf.Sin((time - s) * DoublePi / p)) + from;
 	}		
 
 	static public float easeOutElastic(float from, float to, float time){
-        const float p = .3f;
-        const float s = p / 4f;
-        to -= from;
-        return to * Mathf.Pow(2f, -10f * time) * Mathf.Sin((time - s) * DoublePi / p) + to + from;
+		const float p = .3f;
+		const float s = p / 4f;
+		to -= from;
+		return to * Mathf.Pow(2f, -10f * time) * Mathf.Sin((time - s) * DoublePi / p) + to + from;
 	}		
 	
 	static public float easeInOutElastic(float from, float to, float time){
 		const float p = .3f * 1.5f;
-        const float s = p / 4f;
-        to -= from;
-        if ((time /= .5f) < 1f)
-            return -.5f * (to * Mathf.Pow(2f, 10f * (time -= 1f)) * Mathf.Sin((time - s) * DoublePi / p)) + from;
-        return to * Mathf.Pow(2f, -10f * (time -= 1f)) * Mathf.Sin((time - s) * DoublePi / p) * .5f + to + from;
+		const float s = p / 4f;
+		to -= from;
+		if ((time /= .5f) < 1f)
+			return -.5f * (to * Mathf.Pow(2f, 10f * (time -= 1f)) * Mathf.Sin((time - s) * DoublePi / p)) + from;
+		return to * Mathf.Pow(2f, -10f * (time -= 1f)) * Mathf.Sin((time - s) * DoublePi / p) * .5f + to + from;
 	}
 
 

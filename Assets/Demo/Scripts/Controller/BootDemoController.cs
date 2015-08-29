@@ -1,19 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BootDemoController : MonoBehaviour, BundleLoadingPresenter {
+public class BootDemoController : SceneControllerBase, BundleLoadingPresenter {
 	Logger logger = new Logger("[IntroController]");
 
 	void Awake() {
-		// initialize string bundle
-		Service.sb.Initialize("en", new string[] {"ko", "en"});
-
-#if !UNITY_ANDROID && !UNITY_IOS
-		Swith Platfrom to "Android" Or "iOS" to Test BundleDownload
-#endif
+		InitController();
 	}
 
 	IEnumerator Start() {
+#if !UNITY_ANDROID && !UNITY_IOS
+		Swith Platfrom to "Android" Or "iOS" to Test BundleDownload
+#endif
+		yield return Service.Run(InitializeService());
+		if (Service.ready == true) {
+			yield return Service.Run(MakeRemoteStuff());
+		}
+	}
+
+	IEnumerator InitializeService() {
+		Service.ready = false;
+
+		// initialize string bundle
+		Service.sb.Initialize("en", new string[] {"ko", "en"});
+
 		// initialize setting service
 		yield return Service.Run(Service.setting.Initialize());
 
@@ -25,6 +35,10 @@ public class BootDemoController : MonoBehaviour, BundleLoadingPresenter {
 			yield break;
 		}
 
+		Service.ready = true;
+	}
+
+	IEnumerator MakeRemoteStuff() {
 		// load remote scene
 		yield return Service.Run(Service.bundle.LoadLevelAdditiveAsync("BootStage1"));
 

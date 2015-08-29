@@ -10,15 +10,15 @@ public class StringBundleServiceImpl : Singleton<StringBundleServiceImpl>, Strin
 	private string stringBundlefilePath = "StringBundles/StringBundle";
 	private Dictionary<string, Dictionary<string, string>> bundles = new Dictionary<string, Dictionary<string, string>>();
 	private Dictionary<string, HashSet<string>> questions = new Dictionary<string, HashSet<string>>();
-    private HashSet<string> supportLangs = new HashSet<string>();
-    private string defaultLang = "en";
+	private HashSet<string> supportLangs = new HashSet<string>();
+	private string defaultLang = "en";
 	
 	// properties
 	//-------------------------------------------------------------------------
 	public string language { 
 		get { 
 			string lang = GetSystemLanguage(Application.systemLanguage); 
-            if (supportLangs.Contains(lang) == true) {
+			if (supportLangs.Contains(lang) == true) {
 				return lang;
 			}
 
@@ -29,10 +29,10 @@ public class StringBundleServiceImpl : Singleton<StringBundleServiceImpl>, Strin
 	// apis
 	//-------------------------------------------------------------------------
 	public void Initialize(string defaultLang, string[] supportLangs) {
-        this.defaultLang = defaultLang;
-        foreach (string lang in supportLangs) {
-            this.supportLangs.Add(lang);
-        }
+		this.defaultLang = defaultLang;
+		foreach (string lang in supportLangs) {
+			this.supportLangs.Add(lang);
+		}
 
 		LoadFromFile();
 #if UNITY_EDITOR		
@@ -280,54 +280,54 @@ public class StringBundleServiceImpl : Singleton<StringBundleServiceImpl>, Strin
 		}
 	}
 
-    public static string GetSystemLanguage() {
-        return GetSystemLanguage(Application.systemLanguage);
-    }
+	public static string GetSystemLanguage() {
+		return GetSystemLanguage(Application.systemLanguage);
+	}
 
-    public static string GetSystemLanguage(SystemLanguage language) {
-        switch (language) {
-            case SystemLanguage.Afrikaans: return "af";
-            case SystemLanguage.Arabic: return "ar";
-            case SystemLanguage.Basque: return "eu";
-            case SystemLanguage.Belarusian: return "be";
-            case SystemLanguage.Bulgarian: return "bg";
-            case SystemLanguage.Catalan: return "ca";
-            case SystemLanguage.Chinese: return "zh";
-            case SystemLanguage.Czech: return "cs";
-            case SystemLanguage.Danish: return "da";
-            case SystemLanguage.Dutch: return "nl";
-            case SystemLanguage.English: return "en";
-            case SystemLanguage.Estonian: return "et";
-            case SystemLanguage.Faroese: return "fo";
-            case SystemLanguage.Finnish: return "fi";
-            case SystemLanguage.French: return "fr";
-            case SystemLanguage.German: return "de";
-            case SystemLanguage.Greek: return "el";
-            case SystemLanguage.Hebrew: return "he";
-            case SystemLanguage.Icelandic: return "is";
-            case SystemLanguage.Indonesian: return "id";
-            case SystemLanguage.Japanese: return "ja";
-            case SystemLanguage.Korean: return "ko";
-            case SystemLanguage.Latvian: return "lv";
-            case SystemLanguage.Lithuanian: return "lt";
-            case SystemLanguage.Norwegian: return "no";
-            case SystemLanguage.Polish: return "pl";
-            case SystemLanguage.Portuguese: return "pt";
-            case SystemLanguage.Romanian: return "ro";
-            case SystemLanguage.Russian: return "ru";
-            case SystemLanguage.SerboCroatian: return "hr";
-            case SystemLanguage.Slovak: return "sk";
-            case SystemLanguage.Slovenian: return "sl";
-            case SystemLanguage.Spanish: return "es";
-            case SystemLanguage.Swedish: return "sv";
-            case SystemLanguage.Thai: return "th";
-            case SystemLanguage.Turkish: return "tr";
-            case SystemLanguage.Ukrainian: return "uk";
-            case SystemLanguage.Vietnamese: return "vi";
-            case SystemLanguage.Hungarian: return "hu";
-            case SystemLanguage.Unknown: return "en";
-        }
+	public static string GetSystemLanguage(SystemLanguage language) {
+		switch (language) {
+			case SystemLanguage.Afrikaans: return "af";
+			case SystemLanguage.Arabic: return "ar";
+			case SystemLanguage.Basque: return "eu";
+			case SystemLanguage.Belarusian: return "be";
+			case SystemLanguage.Bulgarian: return "bg";
+			case SystemLanguage.Catalan: return "ca";
+			case SystemLanguage.Chinese: return "zh";
+			case SystemLanguage.Czech: return "cs";
+			case SystemLanguage.Danish: return "da";
+			case SystemLanguage.Dutch: return "nl";
+			case SystemLanguage.English: return "en";
+			case SystemLanguage.Estonian: return "et";
+			case SystemLanguage.Faroese: return "fo";
+			case SystemLanguage.Finnish: return "fi";
+			case SystemLanguage.French: return "fr";
+			case SystemLanguage.German: return "de";
+			case SystemLanguage.Greek: return "el";
+			case SystemLanguage.Hebrew: return "he";
+			case SystemLanguage.Icelandic: return "is";
+			case SystemLanguage.Indonesian: return "id";
+			case SystemLanguage.Japanese: return "ja";
+			case SystemLanguage.Korean: return "ko";
+			case SystemLanguage.Latvian: return "lv";
+			case SystemLanguage.Lithuanian: return "lt";
+			case SystemLanguage.Norwegian: return "no";
+			case SystemLanguage.Polish: return "pl";
+			case SystemLanguage.Portuguese: return "pt";
+			case SystemLanguage.Romanian: return "ro";
+			case SystemLanguage.Russian: return "ru";
+			case SystemLanguage.SerboCroatian: return "hr";
+			case SystemLanguage.Slovak: return "sk";
+			case SystemLanguage.Slovenian: return "sl";
+			case SystemLanguage.Spanish: return "es";
+			case SystemLanguage.Swedish: return "sv";
+			case SystemLanguage.Thai: return "th";
+			case SystemLanguage.Turkish: return "tr";
+			case SystemLanguage.Ukrainian: return "uk";
+			case SystemLanguage.Vietnamese: return "vi";
+			case SystemLanguage.Hungarian: return "hu";
+			case SystemLanguage.Unknown: return "en";
+		}
 
-        return "en";
-    }
+		return "en";
+	}
 }

@@ -34,27 +34,27 @@ public class GoPoolerImpl : SingletonGameObject<GoPoolerImpl>, GoPooler {
 		return newly.GetComponent<T>();
 	}
 
-    public IEnumerator GetRemote<T>(string path, GameObject parent, OutResult<T> result) where T : GoItem {
-        if (storedObjects.ContainsKey(path)) {
-            Stack stack = storedObjects[path];
-            GameObject stored = PopGameObjectFromStack(stack);
-            if (stored != null) {
-                SetReady(stored, parent);
-                result.value = stored.GetComponent<T>();
-                yield break;
-            }
-        }
+	public IEnumerator GetRemote<T>(string path, GameObject parent, OutResult<T> result) where T : GoItem {
+		if (storedObjects.ContainsKey(path)) {
+			Stack stack = storedObjects[path];
+			GameObject stored = PopGameObjectFromStack(stack);
+			if (stored != null) {
+				SetReady(stored, parent);
+				result.value = stored.GetComponent<T>();
+				yield break;
+			}
+		}
 
-        OutResult<GameObject> res = new OutResult<GameObject>();
-        yield return StartCoroutine(MakeRemote(path, res));
-        GameObject newly = res.value;
-        if (newly == null) {
-            yield break;
-        }
+		OutResult<GameObject> res = new OutResult<GameObject>();
+		yield return StartCoroutine(MakeRemote(path, res));
+		GameObject newly = res.value;
+		if (newly == null) {
+			yield break;
+		}
 
-        SetReady(newly, parent);
-        result.value = newly.GetComponent<T>();
-    }	
+		SetReady(newly, parent);
+		result.value = newly.GetComponent<T>();
+	}	
 
 	public void Return(GoItem item) {
 		string path = item.resourcePath;
@@ -90,12 +90,12 @@ public class GoPoolerImpl : SingletonGameObject<GoPoolerImpl>, GoPooler {
 	}
 
 	public void Prepare(string path, int count) { 
-        if (Service.bundle.IsRemoteResource(path)) {
-            StartCoroutine(PrepareRemote(path, count));
-        }
-        else {
-            PrepareLocal(path, count);
-        }
+		if (Service.bundle.IsRemoteResource(path)) {
+			StartCoroutine(PrepareRemote(path, count));
+		}
+		else {
+			PrepareLocal(path, count);
+		}
 	}
    
 	void Awake() {
@@ -136,27 +136,27 @@ public class GoPoolerImpl : SingletonGameObject<GoPoolerImpl>, GoPooler {
 		return itemObj;
 	}
 
-    IEnumerator MakeRemote(string path, OutResult<GameObject> result) {
+	IEnumerator MakeRemote(string path, OutResult<GameObject> result) {
 #if !UNITY_EDITOR
-        if (Service.bundle.IsRemoteResource(path) == false) {
-            logger.LogError("It is not a remote resource:" + path);
-            yield break;
-        }
+		if (Service.bundle.IsRemoteResource(path) == false) {
+			logger.LogError("It is not a remote resource:" + path);
+			yield break;
+		}
 #endif
 
-        yield return StartCoroutine(Service.bundle.Instantiate(path, result));
-        if (result.value == null) {
-            yield break;
-        }
+		yield return StartCoroutine(Service.bundle.Instantiate(path, result));
+		if (result.value == null) {
+			yield break;
+		}
 
-        GameObject itemObj = result.value;
-        GoItem item = itemObj.GetComponent<GoItem>();
-        if (item == null) {
-            logger.LogError("Doesn't have GoItem:" + path);
-            yield break;
-        }
-        item.resourcePath = path;
-    }
+		GameObject itemObj = result.value;
+		GoItem item = itemObj.GetComponent<GoItem>();
+		if (item == null) {
+			logger.LogError("Doesn't have GoItem:" + path);
+			yield break;
+		}
+		item.resourcePath = path;
+	}
 
 	Stack GetStack(string path) {
 		Stack stack = null; 
@@ -206,15 +206,15 @@ public class GoPoolerImpl : SingletonGameObject<GoPoolerImpl>, GoPooler {
 		}
 	}
 
-    IEnumerator PrepareRemote(string path, int count) { 
-        OutResult<List<GameObject>> result = new OutResult<List<GameObject>>();
-        yield return StartCoroutine(Service.bundle.Instantiate(path, count, result));
+	IEnumerator PrepareRemote(string path, int count) { 
+		OutResult<List<GameObject>> result = new OutResult<List<GameObject>>();
+		yield return StartCoroutine(Service.bundle.Instantiate(path, count, result));
 
-        for (int i=0; i<result.value.Count; i++) {
-            GameObject itemObj = result.value[i];
-            if (itemObj == null) {
-                continue;
-            }
+		for (int i=0; i<result.value.Count; i++) {
+			GameObject itemObj = result.value[i];
+			if (itemObj == null) {
+				continue;
+			}
 
 			GoItem item = itemObj.GetComponent<GoItem>();
 			if (item == null) {
@@ -222,13 +222,13 @@ public class GoPoolerImpl : SingletonGameObject<GoPoolerImpl>, GoPooler {
 			}
 
 			MatchParent(item);
-            item.transform.localPosition = Vector3.up * 9999;
-            itemObj.SetActive(true);
-            item.resourcePath = path;
-            item.Prepare();
+			item.transform.localPosition = Vector3.up * 9999;
+			itemObj.SetActive(true);
+			item.resourcePath = path;
+			item.Prepare();
 			Return(item, prepareTime);
-        }
-    }	
+		}
+	}	
 
 #if CLUE_NGUI_SUPPORT
 	bool IsNGUIWidget(GoItem item) {

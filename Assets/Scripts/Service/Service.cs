@@ -12,9 +12,9 @@ public class Service : SingletonGameObject<Service> {
 	public static GoPooler goPooler { get { return GoPoolerImpl.instance; } }
 	public static StringBundleService sb { get { return StringBundleServiceImpl.instance; } }
 	public static EncryptionService encryption { get { return EncryptionServiceImpl.instance; } }
-    public static SoundService sound { get { return SoundServiceImpl.instance; } }
-    public static SettingService setting { get { return SettingServiceImpl.instance; } }
-    public static TimeService time { get { return TimeServiceImpl.instance; } }
+	public static SoundService sound { get { return SoundServiceImpl.instance; } }
+	public static SettingService setting { get { return SettingServiceImpl.instance; } }
+	public static TimeService time { get { return TimeServiceImpl.instance; } }
 
 	// Callbacks
 	//-------------------------------------------------------------------------

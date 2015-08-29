@@ -8,7 +8,7 @@ public class OutResult<T> {
 public class BoolResult : OutResult<bool> {
 	public bool IsSuccess() { return value == true; }
 	public bool IsFailed() { return value == false; }
-    public void SetSuccess(bool success) { value = success; }
+	public void SetSuccess(bool success) { value = success; }
 }
 
 public class NetResult : BoolResult {
