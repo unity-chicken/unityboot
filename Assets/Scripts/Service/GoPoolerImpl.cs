@@ -1,5 +1,3 @@
-// #define CLUE_NGUI_SUPPORT
-
 using UnityEngine;
 using System;
 using System.Collections;
@@ -9,7 +7,7 @@ public class GoPoolerImpl : SingletonGameObject<GoPoolerImpl>, GoPooler {
     Dictionary<string, Stack> storedObjects = new Dictionary<string, Stack>();
     Dictionary<string, GameObject> storedPrefabs = new Dictionary<string, GameObject>();
     Logger logger = new Logger("[GoPooler]");
-    #if CLUE_NGUI_SUPPORT
+    #if BOOT_NGUI_SUPPORT
     UIRoot uiRoot = null;
     #endif
 
@@ -99,7 +97,7 @@ public class GoPoolerImpl : SingletonGameObject<GoPoolerImpl>, GoPooler {
     }
    
     void Awake() {
-    #if CLUE_NGUI_SUPPORT
+    #if BOOT_NGUI_SUPPORT
         uiRoot = GameObject.FindObjectOfType(typeof(UIRoot)) as UIRoot;
     #endif
     }
@@ -230,7 +228,7 @@ public class GoPoolerImpl : SingletonGameObject<GoPoolerImpl>, GoPooler {
         }
     }    
 
-#if CLUE_NGUI_SUPPORT
+#if BOOT_NGUI_SUPPORT
     bool IsNGUIWidget(GoItem item) {
         return item.GetComponentInChildren<UIWidget>() != null;
     }

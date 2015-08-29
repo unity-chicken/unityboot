@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-#if NGUI_SUPPORT
+#if BOOT_NGUI_SUPPORT
 public class UIArranger : MonoBehaviour {
     public enum AnchroType {
         Center,

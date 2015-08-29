@@ -1,4 +1,4 @@
-#define CLUE_RESOURCE_EDIT 
+#define BOOT_BUNDLE_EDIT 
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -81,7 +81,7 @@ public class BundleDownloaderImpl : Singleton<BundleDownloaderImpl>, BundleDownl
             yield break;
         }
 
-#if UNITY_EDITOR && CLUE_RESOURCE_EDIT
+#if UNITY_EDITOR && BOOT_BUNDLE_EDIT
         yield break;
 #endif
 
@@ -169,7 +169,7 @@ public class BundleDownloaderImpl : Singleton<BundleDownloaderImpl>, BundleDownl
             yield break;
         }
 
-#if UNITY_EDITOR && CLUE_RESOURCE_EDIT
+#if UNITY_EDITOR && BOOT_BUNDLE_EDIT
         yield break;
 #endif
 
@@ -320,11 +320,12 @@ public class BundleDownloaderImpl : Singleton<BundleDownloaderImpl>, BundleDownl
             name = name.Substring(index + 1);
         }
 
-#if UNITY_EDITOR && CLUE_RESOURCE_EDIT
+#if UNITY_EDITOR && BOOT_BUNDLE_EDIT
         string realPath = "Assets/Resources2Pack/" + path + "." + fileType;
         result.value = UnityEditor.AssetDatabase.LoadAssetAtPath<AudioClip>(realPath);
         yield break;
 #endif
+
         if (remoteResources.ContainsKey(name) == false) {
             logger.LogError("It's not a remote resource: " + path);
             yield break;
@@ -373,7 +374,7 @@ public class BundleDownloaderImpl : Singleton<BundleDownloaderImpl>, BundleDownl
             name = name.Substring(index + 1);
         }
 
-#if UNITY_EDITOR && CLUE_RESOURCE_EDIT
+#if UNITY_EDITOR && BOOT_BUNDLE_EDIT
         string realPath = "Assets/Resources2Pack/" + path + ".mat";
         result.value = UnityEditor.AssetDatabase.LoadAssetAtPath<Material>(realPath);
         yield break;
@@ -426,7 +427,7 @@ public class BundleDownloaderImpl : Singleton<BundleDownloaderImpl>, BundleDownl
             name = name.Substring(index + 1);
         }
 
-#if UNITY_EDITOR && CLUE_RESOURCE_EDIT
+#if UNITY_EDITOR && BOOT_BUNDLE_EDIT
         string realPath = "Assets/Resources2Pack/" + path + ".prefab";
         result.value = GameObject.Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(realPath)) as GameObject;
         yield break;
@@ -480,7 +481,7 @@ public class BundleDownloaderImpl : Singleton<BundleDownloaderImpl>, BundleDownl
             name = name.Substring(index + 1);
         }
 
-#if UNITY_EDITOR && CLUE_RESOURCE_EDIT
+#if UNITY_EDITOR && BOOT_BUNDLE_EDIT
         string realPath = "Assets/Resources2Pack/" + path + ".prefab";
         GameObject obj = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(realPath);
         if (obj == null) {
@@ -495,6 +496,7 @@ public class BundleDownloaderImpl : Singleton<BundleDownloaderImpl>, BundleDownl
         }
         yield break;
 #endif
+
         if (remoteResources.ContainsKey(name) == false) {
             logger.LogError("It's not a remote resource: " + path);
             yield break;
@@ -546,7 +548,7 @@ public class BundleDownloaderImpl : Singleton<BundleDownloaderImpl>, BundleDownl
     }
 
     public IEnumerator LoadLevel(string name) {
-#if (CLUE_RESOURCE_EDIT && UNITY_EDITOR)
+#if (BOOT_BUNDLE_EDIT && UNITY_EDITOR)
         Application.LoadLevel(name);
         yield break;
 #endif
@@ -578,7 +580,7 @@ public class BundleDownloaderImpl : Singleton<BundleDownloaderImpl>, BundleDownl
     public IEnumerator LoadLevelAdditiveAsync(string name) {
         string asset = name;
 
-#if (CLUE_RESOURCE_EDIT && UNITY_EDITOR)
+#if (BOOT_BUNDLE_EDIT && UNITY_EDITOR)
         {
             AsyncOperation async = Application.LoadLevelAdditiveAsync(name);
             yield return async;
