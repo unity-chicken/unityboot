@@ -21,10 +21,7 @@ public class BootDemoController : SceneControllerBase, BundleLoadingPresenter {
     IEnumerator InitializeService() {
         Service.ready = false;
 
-        // initialize string bundle
-        Service.sb.Initialize("en", "ko");
-
-        // initialize setting service
+        yield return Service.sb.Initialize("en", "ko");
         yield return Service.Run(Service.setting.Initialize());
 
         // initialize bundle downloader service
