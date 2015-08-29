@@ -28,9 +28,9 @@ public class StringBundleServiceImpl : Singleton<StringBundleServiceImpl>, Strin
 
     // apis
     //-------------------------------------------------------------------------
-    public void Initialize(string defaultLang, string[] supportLangs) {
-        this.defaultLang = defaultLang;
-        foreach (string lang in supportLangs) {
+    public void Initialize(params string[] langs) {
+        this.defaultLang = langs[0];
+        foreach (string lang in langs) {
             this.supportLangs.Add(lang);
         }
 

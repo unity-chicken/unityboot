@@ -22,7 +22,7 @@ public class BootDemoController : SceneControllerBase, BundleLoadingPresenter {
         Service.ready = false;
 
         // initialize string bundle
-        Service.sb.Initialize("en", new string[] {"ko", "en"});
+        Service.sb.Initialize("en", "ko");
 
         // initialize setting service
         yield return Service.Run(Service.setting.Initialize());
